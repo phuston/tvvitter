@@ -1,0 +1,116 @@
+#page-wrap {
+     width: 65%;
+     margin: 0 auto;
+}
+
+#navbar {
+	text-align: center;
+	border-radius: 5px;
+	height:100px;
+	background-color:#0288D1;
+	width:100%;
+}
+
+#navbar h1 {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+
+
+#composeContainer {
+	float: left;
+}
+
+#main {
+	padding:10px;
+	float:left;
+	width:70%;
+	background:#9E9E9E;
+}
+
+#sidebar {
+	padding:5px;
+	float:right;
+	width:25%;
+	background:#727272;
+	overflow:hidden;
+}
+
+.tvveet {
+	margin: 5px;
+	padding: 2px;
+	width:100%;
+	background-color: #B3E5FC;
+	border-radius: 4px;
+}
+
+.user {
+	width:100%;
+	background-color: #B3E5FC;
+	border-radius: 4px;
+}
+
+.user >p {
+	margin: 2px;
+}
+
+.tvveet >p {
+	margin: 2px;
+}
+
+#tvveetContainer {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+#mainContainer {
+   display: -webkit-flex;
+   display: flex;
+   -webkit-flex-direction: column;
+   flex-direction: column;
+   -webkit-align-items: center;
+   align-items: center;
+   -webkit-justify-content: center;
+   justify-content: center;
+}
+
+#composeContainer {
+	width:100%;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+#tvveetContentContainer {flex-grow:4;}
+
+#tvveetContentContainer input[type="text"] {
+	width:100%;
+}
+
+#loginContainer {
+	width:100%;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	justify-content: left;
+}
+
+#loginInputContainer input[type="text"]{
+	width:100%;
+}
+
+#loginSubmitContainer input {
+	width:100%;
+}
+
+#hidden-template-tvveet {
+	display: none;
+}
