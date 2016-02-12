@@ -111,7 +111,7 @@ $( document ).ready(function() {
     })
 
     $("#logoutSubmit").click(function(){
-        $(".user").css('background-color', '#B3E5FC')
+        $(".user").css('background-color', baseColor)
         $("#loginContainer").show();
         $("#logoutContainer").hide();
         $("#composeContainer").hide()
