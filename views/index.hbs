@@ -10,7 +10,7 @@
 	<div id="main">
 		<h3>Tvveets</h3>
 		<div id='mainContainer'>
-			<div class="tvveet" id="hidden-template-tvveet">
+			<div class="tvveet" data-author="" data-id="" id="hidden-template-tvveet">
 				<p class="tvveetContent"></p>
 				<p class="tvveetAuthor"></p>
 			</div>
@@ -24,7 +24,7 @@
 			</div>
 			<div id="tvveetContainer">
 				{{#each Tvveets}}
-				<div class="tvveet">
+				<div class="tvveet" data-author="{{author}}" data-id="{{_id}}">
 					<p class="tvveetContent">{{content}}</p>
 					<p class="tvveetAuthor">-{{author}}</p>
 				</div>
@@ -35,8 +35,8 @@
 	<div id="sidebar">
 
 
-		<div class="hidden-template-user" style="display:none">
-			<p>{{username}}</p>
+		<div class="user" id="hidden-template-user">
+			<p class="username">{{username}}</p>
 		</div>
 
 		<div id="loginContainer">
@@ -60,15 +60,10 @@
 
 		<h4>All Users</h4>
 
-		<div class="user" id="currentUserContainer">
-			<p>Not logged in!</p>
-			<p id="currentUser"></p>
-		</div>
-
 		<div id="userContainer">
 			{{#each Users}}
 			<div class="user" id="{{username}}Container">
-				<p id="{{username}}">{{username}}</p>
+				<p class="username" id="{{username}}">{{username}}</p>
 			</div>
 			{{/each}}
 		</div>

@@ -6,7 +6,7 @@
   text-align: center;
   border-radius: 5px;
   height: 100px;
-  background-color: #0288D1;
+  background-color: #3498db;
   width: 100%; }
 
 #navbar h1 {
@@ -21,25 +21,27 @@
   padding: 10px;
   float: left;
   width: 70%;
-  background: #9E9E9E; }
+  background: #ecf0f1;
+  border-radius: 2px; }
 
 #sidebar {
   padding: 5px;
   float: right;
   width: 25%;
-  background: #727272;
+  background: #ecf0f1;
+  border-radius: 2px;
   overflow: hidden; }
 
 .tvveet {
   margin: 5px;
   padding: 2px;
   width: 100%;
-  background-color: #B3E5FC;
+  background-color: #bdc3c7;
   border-radius: 4px; }
 
 .user {
   width: 100%;
-  background-color: #B3E5FC;
+  background-color: #bdc3c7;
   border-radius: 4px; }
 
 .user > p {
@@ -94,4 +96,7 @@
   width: 100%; }
 
 #hidden-template-tvveet {
+  display: none; }
+
+#hidden-template-user {
   display: none; }

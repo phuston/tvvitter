@@ -11,11 +11,24 @@ router.get('/', function(req, res, next) {
 	})
 });
 
-/* POST users/login -- logs in if exists, creates if doesn't */
+router.post('/new', function(req, res, next) {
+	var newUser = new User({
+		username: req.body.username
+	});
+
+	newUser.save(function(err){
+		if (err){ return console.error(err); }
+
+		response = {user: newUser, success:true}
+		res.status(200).json(response)
+	});
+})
+
+/* POST users/login -- 'logs in' if exists, creates if doesn't */
 router.post('/login', function(req, res, next) {
 	var newUser = {
 		username: req.body.username
-	}
+	};
 
 	User.findOneAndUpdate({username: req.body.username}, {$setOnInsert: newUser}, {upsert: true}, function(err, user){
 		if(user) {
