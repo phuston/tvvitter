@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var tvveets = require('./routes/tvveets');
+var login = require('./routes/login')
 
 mongoose.connect('mongodb://patrick:olinjs@ds031922.mongolab.com:31922/tvvitter');
 
@@ -34,7 +35,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
 app.use('/users', users);
-app.use('/tvveets', tvveets)
+app.use('/tvveets', tvveets);
+app.use('/login', login);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

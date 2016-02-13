@@ -1,0 +1,36 @@
+$navbar-color: #3498db;
+$background-color: #ecf0f1;
+$element-color: #bdc3c7;
+
+html, body {
+	height:100%;
+}
+
+#pageWrap {
+	height:100%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction:column;
+}
+
+#loginContainer {
+	max-width:50%;
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+}
+
+#usernameInput {flex-grow:4;}
+
+#title {
+	text-align: center;
+	height:60px;
+	max-width:50%;
+}
+
+#title h2 {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
+}
