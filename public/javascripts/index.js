@@ -2,10 +2,8 @@ $( document ).ready(function() {
     var highlightColor = "#3498db";
     var baseColor = "#bdc3c7";
 
-    var currentUser = null;
-
-    $("#logoutContainer").hide()
-    $("#composeContainer").hide()
+    var currentUser = $("#currentUsername").text();
+    console.log("USER: " + currentUser)
 
     var $tvveetContainer = $("#tvveetContainer")
     var $userContainer = $("#userContainer")
@@ -21,19 +19,14 @@ $( document ).ready(function() {
         // Validation on Tvveet - make sure it's not empty
         if ($tvveetContent == ''){
             alert("Tvveet body is empty. Please enter a tvveet!")
-            return
-        }
-
-        // Validation on Tvveet author login - make sure user is logged in
-        if (!currentUser){
-            alert("Please log in before you post!");
-            $("#tvveetContent").val('')
         } else {
             // Create tvveet object
             var tvveet = {
                 content: $tvveetContent,
                 author: currentUser
             }
+
+            console.log(currentUser);
 
             // Post tvveet object
             $.post('tvveets/post', tvveet, function(response, status){
@@ -52,72 +45,78 @@ $( document ).ready(function() {
 
                 $("#tvveetContent").val('');
             })
-        }
-        
+        } 
     })
 
-    $("#loginSubmit").click(function() {
-        var $username = $("#loginInput").val()
+    // $("#loginSubmit").click(function() {
+    //     var $username = $("#loginInput").val()
 
-        $("#loginInput").val("")
+    //     $("#loginInput").val("")
 
-        $(".user").css('background-color', baseColor)
+    //     $(".user").css('background-color', baseColor)
 
 
-        if ($username == ''){
-            alert("You must enter a username.")
-        } else {
-            var $user = $("#" + $username).html();
+    //     if ($username == ''){
+    //         alert("You must enter a username.")
+    //     } else {
+    //         var $user = $("#" + $username).html();
 
-            if($user){
-                currentUser = $user;
-                $("#currentUsername").html($user);
-                // $("#" + $username + "Container").css('background-color', 'red');
-                console.log("User exists. 'logging in'.");
-                $("#loginContainer").hide()
-                $("#logoutContainer").show()
-                $("#composeContainer").show()
-            } else {
+    //         if($user){
+    //             currentUser = $user;
+    //             $("#currentUsername").html($user);
+    //             // $("#" + $username + "Container").css('background-color', 'red');
+    //             console.log("User exists. 'logging in'.");
+    //             $("#loginContainer").hide()
+    //             $("#logoutContainer").show()
+    //             $("#composeContainer").show()
+    //         } else {
 
-                var user = {
-                    username: $username
-                }
+    //             var user = {
+    //                 username: $username
+    //             }
 
-                console.log('Creating new user!')
+    //             console.log('Creating new user!')
 
-                $.post('users/new', user, function(response, status){
-                    console.log(response.success)
+    //             $.post('users/new', user, function(response, status){
+    //                 console.log(response.success)
 
-                    if (response.success) {
-                        currentUser = $username
+    //                 if (response.success) {
+    //                     currentUser = $username
 
-                        var $newUser = $templateUser.clone();
-                        $newUser.attr("id", $username+"Container");
-                        $newUser.find(".username").html($username);
-                        $newUser.find(".username").attr("id", $username);
+    //                     var $newUser = $templateUser.clone();
+    //                     $newUser.attr("id", $username+"Container");
+    //                     $newUser.find(".username").html($username);
+    //                     $newUser.find(".username").attr("id", $username);
 
-                        // $("#" + $username + "Container").css('background-color', 'red');
-                        $("#currentUsername").html($username);
+    //                     // $("#" + $username + "Container").css('background-color', 'red');
+    //                     $("#currentUsername").html($username);
 
-                        $userContainer.prepend($newUser)
+    //                     $userContainer.prepend($newUser)
 
-                        $("#loginContainer").hide()
-                        $("#logoutContainer").show()
-                        $("#composeContainer").show()
-                    }
-                })
-            }
-        }
-    })
+    //                     $("#loginContainer").hide()
+    //                     $("#logoutContainer").show()
+    //                     $("#composeContainer").show()
+    //                 }
+    //             })
+    //         }
+    //     }
+    // })
 
-    $("#logoutSubmit").click(function(){
-        $(".user").css('background-color', baseColor)
-        $("#loginContainer").show();
-        $("#logoutContainer").hide();
-        $("#composeContainer").hide()
+    // $("#logoutSubmit").click(function(){
+    //     $(".user").css('background-color', baseColor)
+    //     $("#loginContainer").show();
+    //     $("#logoutContainer").hide();
+    //     $("#composeContainer").hide()
 
-        var currentUser = null;
-    })
+    //     var currentUser = null;
+    // })
+
+    // $("#logoutSubmit").click(function(){
+    //     // TODO: Actually logout
+
+    //     var currentUser = null;
+    // })
+
 
     $("body").on('click', '.user', function() {
         $(".user").css('background-color',baseColor)

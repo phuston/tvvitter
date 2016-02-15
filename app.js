@@ -5,11 +5,21 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
+var passport = require('passport');
+var config = require('./oauth.js');
+var FacebookStrategy = require('passport-facebook').Strategy;
+var LocalStrategy = require('passport-local').Strategy;
+var session = require('express-session');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
 var tvveets = require('./routes/tvveets');
-var login = require('./routes/login')
+var login = require('./routes/login');
+var auth = require('./routes/auth')
+var logout = require('./routes/logout')
+
+
+var User = require('./models/user.js');
 
 mongoose.connect('mongodb://patrick:olinjs@ds031922.mongolab.com:31922/tvvitter');
 
@@ -33,10 +43,56 @@ app.use(require('node-sass-middleware')({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(session({ 
+  secret: 'super secretive secret',
+  resave: false,
+  saveUninitialized: false }));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/tvveets', tvveets);
 app.use('/login', login);
+app.use('/logout', logout);
+app.use('/auth', auth);
+
+// Passport Local config
+passport.use(new LocalStrategy(
+  function(username, password, cb) {
+    User.findOne({username: username}, function(err, user) {
+      if (err) { return cb(err); }
+      if (!user) { return cb(null, false); }
+      // if (user.password != password) { return cb(null, false); }
+      console.log("HELLO")
+      console.log(user.username)
+      return cb(null, user.username);
+    });
+  }));
+
+// Passport Facebook config
+passport.use(new FacebookStrategy({
+  clientID: config.facebook.facebookID,
+  clientSecret: config.facebook.facebookSecret,
+  callbackURL: config.facebook.callbackURL
+  },
+  function(accessToken, refreshToken, profile, done) {
+    var username = profile.displayName.split(" ")[0];
+    console.log(username);
+    done(null, username);
+  }
+));
+
+// Passport serialization
+passport.serializeUser(function(user, done) {
+  done(null, user);
+});
+
+passport.deserializeUser(function(user, done) {
+  done(null, user);
+});
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

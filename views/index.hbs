@@ -40,7 +40,7 @@
 			<p class="username">{{username}}</p>
 		</div>
 
-		<div id="loginContainer">
+<!-- 		<div id="loginContainer">
 			<h4>Login</h4>	
 			<div id="loginInputContainer">
 				<input id="loginInput" type="text"/>
@@ -49,13 +49,15 @@
 				<input id="loginSubmit" type="button" value="Login"/>
 			</div>
 		</div>
-
+ -->
 		<div id="logoutContainer">
 			<div id="currentUsernameContainer">
-				<h4 id="currentUsername"></h5>
+				<h4 id="currentUsername">{{Username}}</h4>
 			</div>	
 			<div id="logoutSubmitContainer">
-				<input id="logoutSubmit" type="button" value="Logout"/>
+				<form action="/logout" method="post">
+					<input type="submit" value="Logout"/>
+				</form>
 			</div>
 		</div>
 

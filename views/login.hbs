@@ -7,7 +7,13 @@
 		<h2>Tvvitter</h2>
 	</div>
 	<div id="loginContainer">
-		<input id="usernameInput" type="text">
-		<input id="loginSubmit" type="button" value="Login">
+		<form action="/login" method="post">
+			<input type="text" name="username" placeholder="Username"/>
+			<input type="password" name="password" placeholder="Password"/>
+			<input type="submit" value="Submit"/>
+		</form>
+<!-- 		<input id="usernameInput" placeholder="Username" type="text">
+		<input id="loginSubmit" type="button" value="Login"> -->
 	</div>
+		<a href="/auth/facebook">Login with Facebook</a>
 </div>

@@ -1,12 +1,14 @@
 var express = require('express');
 var router = express.Router();
+
 var Async = require('async');
 
 var Tvveet = require('../models/tvveet.js');
 var User = require('../models/user.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/', ensureAuthenticated, function(req, res, next) {
+	console.log(req.user) 
 	Async.parallel([
 
 		function(callback) {
@@ -47,8 +49,13 @@ router.get('/', function(req, res, next) {
 	    var tvveets = results[0] || [];
 	    var users = results[1] || [];
 	 
-	    return res.status(200).render('index', {Tvveets: tvveets, Users: users});
+	    return res.status(200).render('index', {Tvveets: tvveets, Users: users, Username: req.user});
 	});
 });
+
+function ensureAuthenticated(req, res, next) {
+  if (req.isAuthenticated()) { return next(); }
+    res.redirect('/login');
+}
 
 module.exports = router;
