@@ -8,7 +8,6 @@ var User = require('../models/user.js');
 
 /* GET home page. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
-	console.log(req.user) 
 	Async.parallel([
 
 		function(callback) {

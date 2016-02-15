@@ -61,12 +61,16 @@ app.use('/auth', auth);
 // Passport Local config
 passport.use(new LocalStrategy(
   function(username, password, cb) {
-    User.findOne({username: username}, function(err, user) {
+
+    var newUser = {
+      username: username,
+      password: password
+    }
+
+    User.findOneAndUpdate({username: username}, {$setOnInsert : newUser}, {upsert: true}, function(err, user){
       if (err) { return cb(err); }
-      if (!user) { return cb(null, false); }
-      // if (user.password != password) { return cb(null, false); }
-      console.log("HELLO")
-      console.log(user.username)
+      if (!user) { return cb(null, newUser.username); }
+      if (user.password != password) { return cb(null, false); }
       return cb(null, user.username);
     });
   }));
