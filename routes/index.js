@@ -18,18 +18,18 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
 					callback(err);
 				}
 				callback(null, tvveets);
-			})
+			});
 		},
 
 		function(callback) {
-			var query = User.find({})
+			var query = User.find({});
 
 			query.exec(function(err, users){
 				if(err){
 					callback(err);
 				}
 				callback(null, users);
-			})
+			});
 		}
 	],
 	 
@@ -40,7 +40,7 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
 			return res.send(400);
 	    }
 	 
-	    if (results == null || results[0] == null) {
+	    if (results === null || results[0] === null) {
 	        return res.send(400);
 	    }
 	 

@@ -15,8 +15,8 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var tvveets = require('./routes/tvveets');
 var login = require('./routes/login');
-var auth = require('./routes/auth')
-var logout = require('./routes/logout')
+var auth = require('./routes/auth');
+var logout = require('./routes/logout');
 
 
 var User = require('./models/user.js');
@@ -65,7 +65,7 @@ passport.use(new LocalStrategy(
     var newUser = {
       username: username,
       password: password
-    }
+    };
 
     User.findOneAndUpdate({username: username}, {$setOnInsert : newUser}, {upsert: true}, function(err, user){
       if (err) { return cb(err); }

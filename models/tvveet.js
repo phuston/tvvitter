@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var User = require('./user.js')
+var User = require('./user.js');
 
 var Tvveet = new Schema({
 	_id: {type: String},
