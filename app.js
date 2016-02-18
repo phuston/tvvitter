@@ -61,7 +61,6 @@ app.use('/auth', auth);
 // Passport Local config
 passport.use(new LocalStrategy(
   function(username, password, cb) {
-
     var newUser = {
       username: username,
       password: password
