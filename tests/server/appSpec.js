@@ -58,6 +58,34 @@ describe('The app', function(){
           return done();
         });
     });
+
+    it('should respond with a list of all users on GET /users', function(done){
+      server
+        .get('/users')
+        .expect(200)
+        .end(function(err, res){
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.have.property('Success');
+          res.body.Success.should.equal(true);
+          res.body.should.have.property('Users');
+          done();
+        });
+    });
+
+    it('should respond with a list of all tvveets on GET /tvveets', function(done){
+      server
+        .get('/tvveets')
+        .expect(200)
+        .end(function(err, res){
+          res.should.have.status(200);
+          res.should.be.json;
+          res.body.should.have.property('Success');
+          res.body.Success.should.equal(true);
+          res.body.should.have.property('Tvveets');
+          done();
+        })
+    })
 });
 
 
