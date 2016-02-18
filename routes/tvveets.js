@@ -29,10 +29,8 @@ router.post('/post', function(req, res, next) {
 	});
 });
 
-/* POST users/delete */
+/* POST tvveets/delete */
 router.post('/delete', function(req, res, next) {
-	console.log(req.body.id);
-
 	Tvveet.findByIdAndRemove(req.body.id, function (err, tvveet){
     	if(err) {return console.error(err);}
 

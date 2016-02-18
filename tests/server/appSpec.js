@@ -38,10 +38,26 @@ describe('The app', function(){
     })
 
     it('should respond with the correct tvveet object on POST /tvveets/delete', function(done){
+      console.log(tvveetId);
       server
         .post('/tvveets/delete')
         .send({id: tvveetId})
-    })
+        .expect(200)
+        .end(function(err, res) {
+          done();
+        });
+    });
+
+    it('should logout the user on POST /logout', function(done){
+      server
+        .post('/logout')
+        .expect(302)
+        .expect('Location', '/login')
+        .end(function(err, res){
+          if (err) return done(err);
+          return done();
+        });
+    });
 });
 
 

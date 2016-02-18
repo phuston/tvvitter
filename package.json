@@ -7,7 +7,7 @@
     "mocha": "./node_modules/mocha/bin/mocha tests/server --recursive || exit 0",
     "cover-mocha": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha tests/server -- --recursive -R spec || exit 0",
     "test": "npm run cover-mocha",
-    "start": "nodemon app.js"
+    "start": "nodemon ./bin/www"
   },
   "dependencies": {
     "async": "^1.5.2",

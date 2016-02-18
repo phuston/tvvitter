@@ -54,7 +54,6 @@ router.get('/', ensureAuthenticated, function(req, res, next) {
 
 function ensureAuthenticated(req, res, next) {
   if (req.isAuthenticated()) { return next(); }
-	console.log("NOT LOGGED IN, REDIRECTING");
     res.redirect('/login');
 }
 
