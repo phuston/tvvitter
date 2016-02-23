@@ -80,9 +80,9 @@ passport.use(new LocalStrategy(
 
 // Passport Facebook config
 passport.use(new FacebookStrategy({
-  clientID: config.facebook.facebookID,
-  clientSecret: config.facebook.facebookSecret,
-  callbackURL: config.facebook.callbackURL
+  clientID: clientID,
+  clientSecret: clientSecret,
+  callbackURL: callbackURL
   },
   function(accessToken, refreshToken, profile, done) {
     var username = profile.displayName.split(" ")[0];
