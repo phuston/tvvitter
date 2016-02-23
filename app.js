@@ -6,7 +6,6 @@ var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var passport = require('passport');
-var config = require('./oauth.js');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var LocalStrategy = require('passport-local').Strategy;
 var session = require('express-session');
@@ -18,6 +17,11 @@ var login = require('./routes/login');
 var auth = require('./routes/auth');
 var logout = require('./routes/logout');
 
+
+// Get FB secret info from either heroku env or oauth file
+var clientID = process.env.clientID || require('./oauth.js').facebook.facebookID;
+var clientSecret = process.env.clientSecret || require('./oauth.js').facebook.facebookSecret;
+var callbackURL = process.env.callbackURL || require('./oauth.js').facebook.callbackURL;
 
 var User = require('./models/user.js');
 
