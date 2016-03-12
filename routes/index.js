@@ -8,6 +8,7 @@ var User = require('../models/user.js');
 
 /* GET home page. */
 router.get('/', ensureAuthenticated, function(req, res, next) {
+        /// getting fancy, you might be interested in Promises which just got offically supported in es6 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise Promise.all is a really nice and consise way to do the same thing as async.parallel
 	Async.parallel([
 
 		function(callback) {

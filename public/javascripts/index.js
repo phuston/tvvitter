@@ -31,7 +31,7 @@ $( document ).ready(function() {
             // Post tvveet object
             $.post('tvveets/post', tvveet, function(response, status){
                 console.log(response);
-                
+                // Nice!
                 var $newTvveet = $templateTvveet.clone();
                 $newTvveet.removeAttr('id');
                 $newTvveet.find('.tvveetContent').html($tvveetContent);
@@ -56,6 +56,7 @@ $( document ).ready(function() {
         $('div[data-author="' + $username + '"]').css('background-color', highlightColor);
     });
 
+    //Nice interaction, I might try and show something on the interface to make it clearer you can do this though
     $("body").on('dblclick', '.tvveet', function() {
         var $author = $(this).attr('data-author');
         var $id = $(this).attr('data-id');
