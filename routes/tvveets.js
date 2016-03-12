@@ -15,6 +15,7 @@ router.get('/', function(req, res, next) {
 
 /* POST tvveets/post */
 router.post('/post', function(req, res, next) {
+        //Tvveet.create() should create and save for you
 	var newTvveet = new Tvveet({
 		_id: new ObjectID(),
 		content: req.body.content,

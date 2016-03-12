@@ -8,5 +8,5 @@ var Tvveet = new Schema({
 	content: String,
 	author: String
 }, {collection: 'Tvveet'});
-
+// I wouldn't specify collection twice once in the schema and once in the model
 module.exports = mongoose.model('Tvveet', Tvveet);

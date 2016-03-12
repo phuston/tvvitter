@@ -33,6 +33,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+// funny
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
@@ -62,6 +63,7 @@ app.use('/login', login);
 app.use('/logout', logout);
 app.use('/auth', auth);
 
+// I might move this to a new file
 // Passport Local config
 passport.use(new LocalStrategy(
   function(username, password, cb) {
@@ -70,6 +72,7 @@ passport.use(new LocalStrategy(
       password: password
     };
 
+    // I'd never seen you could upsert with this method, I've been writing my own findOneOrCreate method and attaching it to my models. THe more you know
     User.findOneAndUpdate({username: username}, {$setOnInsert : newUser}, {upsert: true}, function(err, user){
       if (err) { return cb(err); }
       if (!user) { return cb(null, newUser.username); }
@@ -108,6 +111,7 @@ app.use(function(req, res, next) {
   next(err);
 });
 
+// This is awesome
 // error handlers
 
 // development error handler
