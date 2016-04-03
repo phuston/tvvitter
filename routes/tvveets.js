@@ -33,8 +33,8 @@ router.post('/post', function(req, res, next) {
 router.post('/delete', function(req, res, next) {
 	Tvveet.findByIdAndRemove(req.body.id, function (err, tvveet){
     	if(err) {return console.error(err);}
-
-    	console.log(tvveet);
+    	// make sure you clean up your debugging console.logs before your code goes to "production"!
+    	// (throughout app)
     	res.json({Success: true});
 	});
 });

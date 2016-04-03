@@ -13,7 +13,7 @@ describe('The app', function(){
     it('should login the user on POST /login and redirect to /', loginUser());
     it('should return 200 on GET / after logging in', function(done){
     server
-        .get('/')                       
+        .get('/')
         .expect(200)
         .end(function(err, res){
             if (err) return done(err);
@@ -49,6 +49,11 @@ describe('The app', function(){
     });
 
     it('should logout the user on POST /logout', function(done){
+      // Is there any reason the logout test isn't last?
+      // I could imagine that it's because you want to make sure the GET /users and GET /tvveets
+      // routes are available even if you're not logged in -- if so, document with a comment?
+      // (or ideally, probably run the "same" test both for logged-in users and for logged-out users to
+      // make sure it doesn't *only* work in the logged-out case)
       server
         .post('/logout')
         .expect(302)
@@ -90,10 +95,14 @@ describe('The app', function(){
 
 
 function loginUser() {
+  // Nice! I especially appreciate that this is abstracted out -- it's nice to read
+  // it("...", loginUser());
+  // the way you have it, as opposed to
+  // it("...", complicated function);
     return function(done) {
         server
             .post('/login')
-            .send({ username: 'Patrick', password: 'Patrick' })
+            .send({ username: 'Patrick', password: 'Patrick' }) // a maximally-secure password right here :)
             .expect(302)
             .expect('Location', '/')
             .end(onResponse);
