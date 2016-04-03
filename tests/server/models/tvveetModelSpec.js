@@ -33,3 +33,16 @@ describe('Tvveet Model', function() {
     });
   });
 });
+
+/* Structurally, this looks good to me! I like that your describe(...) includes an it(...)
+   for adding an object and an it(...) for removing the same object... it's generally good practice
+   for a test to "clean up after itself" -- leave the database unmodified.
+
+   The "new ObjectId()" mechanism is a really nice way of making sure you have a unique identifier
+   for the test object you inserted into the database -- if you and someone else ran this test against the
+   same remote database at the same time, there'd be essentially-zero chance of one of you deleting the other's
+   test tweet.
+
+   If you ever need random strings in a context where you don't have a convenient ObjectID constructor to call --
+   I've also seen people use the current unix epoch time or a random number (or both concatenated!) for string uniqueness.
+*/

@@ -1,0 +1,71 @@
+Some of your tests failed for me (here's the output) the third time I ran the test suite
+in fairly rapid succession -- any idea what might be happening?
+
+//
+
+  The app
+    1) should login the user on POST /login and redirect to /
+GET / 302 12.555 ms - 28
+    2) should return 200 on GET / after logging in
+    3) should respond with the correct tvveet object on POST /tvveets/post
+undefined
+POST /login 302 5875.765 ms - 23
+    4) should respond with the correct tvveet object on POST /tvveets/delete
+POST /logout 302 2.618 ms - 28
+POST /tvveets/post 200 4159.426 ms - 48
+POST /tvveets/delete 200 2158.532 ms - 16
+    ✓ should logout the user on POST /logout (98ms)
+GET /users 200 97.749 ms - 1394
+    ✓ should respond with a list of all users on GET /users (100ms)
+GET /tvveets 200 53.050 ms - 8881
+    ✓ should respond with a list of all tvveets on GET /tvveets (55ms)
+
+  Tvveet Model
+    ✓ should create a new tvveet
+5701260a5348185c0f2979fe
+    ✓ should remove a tvveet by id
+
+  User Model
+    ✓ should create a new user
+    ✓ should remove a user by name
+
+
+  7 passing (6s)
+  4 failing
+
+  1) The app should login the user on POST /login and redirect to /:
+     Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+
+
+  2) The app should return 200 on GET / after logging in:
+     Error: expected 200 "OK", got 302 "Found"
+      at Test._assertStatus (node_modules/supertest/lib/test.js:232:12)
+      at Test._assertFunction (node_modules/supertest/lib/test.js:247:11)
+      at Test.assert (node_modules/supertest/lib/test.js:148:18)
+      at assert (node_modules/supertest/lib/test.js:127:12)
+      at node_modules/supertest/lib/test.js:124:5
+      at Test.Request.callback (node_modules/superagent/lib/node/index.js:703:3)
+      at IncomingMessage.<anonymous> (node_modules/superagent/lib/node/index.js:922:12)
+      at endReadableNT (_stream_readable.js:913:12)
+
+  3) The app should respond with the correct tvveet object on POST /tvveets/post:
+     Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+
+
+  4) The app should respond with the correct tvveet object on POST /tvveets/delete:
+     Error: timeout of 2000ms exceeded. Ensure the done() callback is being called in this test.
+
+
+
+
+=============================================================================
+Writing coverage object [/home/swalters/Classes/6-Spring-2016/feedback/patrick/coverage/coverage.json]
+Writing coverage reports at [/home/swalters/Classes/6-Spring-2016/feedback/patrick/coverage]
+=============================================================================
+
+=============================== Coverage summary ===============================
+Statements   : 76.54% ( 124/162 )
+Branches     : 35.71% ( 15/42 )
+Functions    : 57.69% ( 15/26 )
+Lines        : 80.52% ( 124/154 )
+================================================================================
